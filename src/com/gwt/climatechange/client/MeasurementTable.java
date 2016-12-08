@@ -21,7 +21,7 @@ public class MeasurementTable {
  		// Add styles to elements in the measurement table.
  		dataFlexTable.getRowFormatter().addStyleName(0, "tableHeader");
 		dataFlexTable.addStyleName("table");
- 		for (int i=0; i<7; i++) {
+ 		for (int i=0; i<5; i++) {
  			dataFlexTable.getCellFormatter().addStyleName(0, i, "tableNumericColumn");
  		}
     }
@@ -38,7 +38,7 @@ public class MeasurementTable {
     }
     
     public void fillTable(DataPoint dataPoint){
-		final int measurementNumberOfColumns = 7;
+		final int measurementNumberOfColumns = 5;
 		int row = dataFlexTable.getRowCount();
 		
 		Float avgTemperature = new Float(Math.round(dataPoint.getTemperature()));

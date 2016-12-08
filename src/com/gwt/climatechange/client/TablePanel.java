@@ -11,6 +11,7 @@ import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -57,6 +58,7 @@ public class TablePanel extends VerticalPanel{
 	
 	public TablePanel() {
 		initialize();
+		filterTable.addFilterToTable("", "", new Date(113, 0, 1), new Date(113, 11, 1));
 	}
 	
 

@@ -14,7 +14,7 @@ body{
 	border: 1px solid silver;
 	padding: 2px;
 	margin-bottom: 6px;
-	text-align: right;
+	text-align: center;
 }
 
 .tabs {
@@ -46,7 +46,6 @@ h1 {
 p {
 	text-align: right;
 }
-
 
 
 /** Most GWT widgets already have a style name defined */
