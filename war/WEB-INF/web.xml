@@ -28,7 +28,7 @@
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>ClimateChangeApp.html</welcome-file>
+    <welcome-file>ClimateChange.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
