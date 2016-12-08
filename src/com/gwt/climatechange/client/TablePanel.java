@@ -59,6 +59,7 @@ public class TablePanel extends VerticalPanel{
 	public TablePanel() {
 		initialize();
 		filterTable.addFilterToTable("", "", new Date(113, 0, 1), new Date(113, 11, 1));
+		refreshMeasurementTable("", "", new Date(113, 0, 1), new Date(113, 11, 1));
 	}
 	
 

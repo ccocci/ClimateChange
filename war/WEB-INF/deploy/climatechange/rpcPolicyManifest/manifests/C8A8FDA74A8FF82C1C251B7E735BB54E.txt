@@ -1,0 +1,2 @@
+serviceClass: com.gwt.climatechange.client.DataService
+path: 0834E66B31DE65B3FF197D123B4D8469.gwt.rpc
