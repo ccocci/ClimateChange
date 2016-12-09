@@ -88,6 +88,15 @@ public class FilterTable {
 		}
 	}
 	
+	public void removeYearFilterFromTable(int syear, int eyear){
+		for(FilterRow filterRow : filterRows){
+			if(filterRow.getStartDate().getYear()>=syear && filterRow.getEndDate().getYear()<=eyear){
+				filterFlexTable.removeRow(filterRows.indexOf(filterRow)+1);
+				filterRows.remove(filterRow);
+			}
+		}
+	}
+	
 	public FilterRow getCurrentRow(String city){
 		FilterRow currentFilterRow = null;
 		for(FilterRow filterRow:filterRows){

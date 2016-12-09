@@ -29,4 +29,5 @@ public interface DataServiceAsync {
 	void getCountries(AsyncCallback<ArrayList<String>> callback);
 	void removeCity(String city, AsyncCallback<ArrayList<DataPoint>> callback);
 	void removeCountry(String country, AsyncCallback<ArrayList<DataPoint>> callback);
+	void removeYears(int syear, int eyear,AsyncCallback<ArrayList<DataPoint>> callback);
 }
