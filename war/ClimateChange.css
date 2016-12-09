@@ -21,6 +21,14 @@ body{
         
 }
 
+.slider {
+	margin: 10px 10px 10px 10px;
+}
+
+yearLabel.{
+	margin: 10px 10px 10px 10px;
+}
+
 .addButton{
 	width:100px
 	height: 40px

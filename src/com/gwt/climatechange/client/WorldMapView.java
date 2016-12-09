@@ -76,7 +76,7 @@ public class WorldMapView extends DockLayoutPanel{
 				// Create and attach the chart
 				geoChart = new GeoChart();
 				add(geoChart);
-				updateGeoChart(INITIAL_DATE);;
+				updateGeoChart(INITIAL_DATE);
 			}
 		});
 	}

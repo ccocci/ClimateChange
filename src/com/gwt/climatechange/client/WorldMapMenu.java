@@ -19,6 +19,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.ToggleButton;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import com.gwt.climatechange.client.slider.Slider;
+
 
 
 
@@ -33,15 +35,8 @@ public class WorldMapMenu extends VerticalPanel {
 	// create panels
 	
 	private VerticalPanel sliderPanel= new VerticalPanel();
-	private VerticalPanel listPanel= new VerticalPanel();
-	private VerticalPanel countryPanel = new VerticalPanel();
-	private VerticalPanel cityPanel = new VerticalPanel();
-	private VerticalPanel yearPanel = new VerticalPanel();
-	private VerticalPanel tempPanel = new VerticalPanel();
-	private HorizontalPanel uncertaintyPanel = new HorizontalPanel();
-	private VerticalPanel uncertaintySliderPanel= new VerticalPanel();
-	
-	
+	private Label yearLabel= new Label("Year");
+	private Slider slider= new Slider("Slider",1880,2013,2013);
 	
 	
 	
@@ -56,12 +51,7 @@ public class WorldMapMenu extends VerticalPanel {
 	public WorldMapMenu(){
 		super();
 		fillPanels();
-		sliderPanel.setSpacing(8);
-		sliderPanel.setHeight("60%");
-		listPanel.setSpacing(8);
-		listPanel.setHeight("40%");
 		add(sliderPanel);
-		add(listPanel);
 		
 		//handleEvents();
 		}
@@ -116,17 +106,11 @@ public class WorldMapMenu extends VerticalPanel {
 	private void fillPanels(){
 		//styleSlider();
 		//Add everything in slidePanel
-		
-		
-		uncertaintyPanel.add(uncertaintySliderPanel);
-		
-		sliderPanel.add(yearPanel);
-		sliderPanel.add(tempPanel);
-		sliderPanel.add(uncertaintyPanel);
-		
-		//Add everything in listPanel
-		listPanel.add(countryPanel);
-		listPanel.add(cityPanel);
+		slider.setWidth("200px");
+		slider.setStyleName("slider");
+		yearLabel.setStyleName("yearLabel");
+		sliderPanel.add(yearLabel);
+		sliderPanel.add(slider);
 		
 	
 	}

@@ -14,7 +14,7 @@ import com.gwt.climatechange.shared.DataPoint;
 
 /**
  * This class handles the parsing of the CSV file.
- * @author		Pascal Siemon
+ * @author		Sophy Chong
  * @history 	2016-08-11 JL First version
  * @version 	2016-08-11 JL 0.1.0
  * @responsibilities
@@ -24,7 +24,7 @@ import com.gwt.climatechange.shared.DataPoint;
 
 public class CSVParser{
 	
-	private ArrayList<DataPoint> Data = new ArrayList<DataPoint>();
+	private ArrayList<DataPoint> data = new ArrayList<DataPoint>();
 	
 	/**
 	 * Reads the csv file and creates all necessary objects which are afterwards stored in the ArrayList Data
@@ -66,7 +66,7 @@ public class CSVParser{
 				
 					
 					//creates measurements and adds them to the ArrayList which will be returned at the end
-					this.Data.add(new DataPoint(temperature, uncertainty, date, city, country, latitude, longitude)); 
+					this.data.add(new DataPoint(temperature, uncertainty, date, city, country, latitude, longitude)); 
 				}
 			}
 		} catch (FileNotFoundException e) {
@@ -84,6 +84,6 @@ public class CSVParser{
 				}
 			}
 		}
-		return Data;
+		return data;
 	}
 }

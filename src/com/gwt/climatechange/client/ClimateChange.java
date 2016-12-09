@@ -61,6 +61,7 @@ public class ClimateChange extends TabLayoutPanel implements EntryPoint {
 		addStyleName("tabs");
 		selectTab(0);
 		
+		dockLayoutPanel.addSouth(worldMapMenu, 10);
 		dockLayoutPanel.add(worldMapView);
 		//Add tabPanel to north
 		//addSouth(exportButton, 10);

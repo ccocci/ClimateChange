@@ -58,8 +58,8 @@ public class TablePanel extends VerticalPanel{
 	
 	public TablePanel() {
 		initialize();
-		filterTable.addFilterToTable("", "", new Date(113, 0, 1), new Date(113, 11, 1));
-		refreshMeasurementTable("", "", new Date(113, 0, 1), new Date(113, 11, 1));
+		//filterTable.addFilterToTable("", "", new Date(113, 0, 1), new Date(113, 11, 1));
+		//refreshMeasurementTable("", "", new Date(113, 0, 1), new Date(113, 11, 1));
 	}
 	
 
@@ -87,6 +87,7 @@ public class TablePanel extends VerticalPanel{
 			}
 		};
 		dataSvc.clearMeasurements(clearCallback);
+		
 		
 		// Add city names to the suggestBox
 		if(dataSvc == null)
@@ -231,6 +232,8 @@ public class TablePanel extends VerticalPanel{
 		        }
 	    	}
 		});
+	    
+	    addInitialFilter();
 	}
 	
 	/**
@@ -316,11 +319,60 @@ public class TablePanel extends VerticalPanel{
 			}
 		});
 	      
+		filterTable.getCurrentRow(city).getRemoveButton().addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				removeYearsFromMeasurementTable(syear,eyear);
+				filterTable.removeYearFilterFromTable(syear,eyear);
+				measurementTable.clearMeasurementTable();
+			}
+		});
 	  
 	    		addData(city, sdate, edate);
 	    		        
 	}
 	
+	private void addInitialFilter() {
+		//Get values from boxes and do capitalization for Strings
+		final String country = "";
+		final String city = "";
+	    final Integer syear = 2013;
+	    final Integer eyear = 2013;
+	    final Date sdate;
+	    final Date edate;
+		
+		// Determine Start Date
+			String sD ="1/1/" + syear;
+			sdate = new Date(sD);
+	    
+		// Determine End Date
+			String eD = "12/1/" + eyear;
+			edate = new Date(eD);
+		
+		if(sdate != null && edate != null || sdate == null && edate == null){
+				filterTable.addFilterToTable(country, city, sdate, edate);
+		}
+ 
+		// Add a button to remove this filter from the table.
+		filterTable.getCurrentRow(city).getRemoveButton().addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				removeYearsFromMeasurementTable(2013,2013);
+				filterTable.removeFilterFromTable(city);
+				measurementTable.clearMeasurementTable();
+			}
+		});
+		
+	/*	filterTable.getCurrentRowCountry(country).getRemoveButton().addClickHandler(new ClickHandler(){
+			public void onClick(ClickEvent event){
+				//removeCountryFromMeasurementTable(country);
+				filterTable.removeFilterFromTable(city);
+				measurementTable.clearMeasurementTable();
+			}
+		});
+	      */
+	  
+	    		addData(city, sdate, edate);
+	    		        
+	}
 	
 	/**
 	 * Refreshed the flex Table containing the measurements
@@ -355,7 +407,7 @@ public class TablePanel extends VerticalPanel{
 				dataSvc.temperatureMeasurementsCityCountry(country, city, sdate, edate, callback);
 			}
 			if(country == "" && city == ""){
-				dataSvc.temperatureMeasurementsYears(sdate.getYear(), edate.getYear(), callback);
+				dataSvc.temperatureMeasurementsYears(sdate.getYear()+1900, edate.getYear()+1900, callback);
 			}
 		}
 		if(sdate == null && edate == null){
@@ -418,6 +470,23 @@ public class TablePanel extends VerticalPanel{
 		dataSvc.removeCountry(country, callback);
 	}
 
+	protected void removeYearsFromMeasurementTable(int syear, int eyear){
+		if(dataSvc == null){
+			dataSvc = GWT.create(DataService.class);
+		}
+		AsyncCallback<ArrayList<DataPoint>> callback = new AsyncCallback<ArrayList<DataPoint>>() {
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub	
+			}
+			
+			@Override
+			public void onSuccess(ArrayList<DataPoint> result) {
+				updateMeasurementTable(result);
+			}
+		};
+		dataSvc.removeYears(syear,eyear, callback);
+	}
 	/**
 	 * Adds all city names in the given ArrayList to the suggestion box
 	 * @pre -
@@ -448,6 +517,12 @@ public class TablePanel extends VerticalPanel{
 	public void removeDataCountry(String country){
 		removeCountryFromMeasurementTable(country);
 		filterTable.removeCountryFilterFromTable(country);
+		measurementTable.clearMeasurementTable();
+	}
+	
+	public void removeDataYears(int syear, int eyear){
+		removeYearsFromMeasurementTable(syear,eyear);
+		filterTable.removeYearFilterFromTable(syear,eyear);
 		measurementTable.clearMeasurementTable();
 	}
 }
