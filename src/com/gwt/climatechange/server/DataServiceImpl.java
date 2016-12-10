@@ -81,7 +81,7 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 	 */
 	public ArrayList<DataPoint> temperatureMeasurementsYears(int syear,int eyear) {
 		for(DataPoint Measurement:this.data){
-			if(	Measurement.getYear()>=syear && Measurement.getYear()<=eyear &&
+			if(	Measurement.getYear()+1900>=syear && Measurement.getYear()+1900<=eyear &&
 				!filteredData.contains(Measurement)){
 					this.filteredData.add(Measurement);
 			}
@@ -252,6 +252,17 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 	}
 	
 	
+	public ArrayList<DataPoint> temperatureMeasurementsCitiesAtYear(int year){
+		sliderData.clear();
+		for(DataPoint Measurement:this.data){
+			if(Measurement.getYear()+ 1900 == year){
+				this.sliderData.add(Measurement);
+			}
+		}
+		return this.sliderData;
+	}
+	
+	
 	
 	/**Removes all measurements of one specific city
 	 * @pre		data != null && filteredData != null && city != null
@@ -279,6 +290,15 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 			if(Measurement.getCountry().equals(country)){
 				this.filteredData.remove(Measurement);
 			}
+		}
+		return this.filteredData;
+	}
+	
+	public ArrayList<DataPoint> removeYears(int syear, int eyear){
+		for(DataPoint Measurement:this.data){
+			if(	Measurement.getYear()+1900>=syear && Measurement.getYear()+1900<=eyear){
+						this.filteredData.remove(Measurement);
+				}
 		}
 		return this.filteredData;
 	}

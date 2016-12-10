@@ -14,11 +14,19 @@ body{
 	border: 1px solid silver;
 	padding: 2px;
 	margin-bottom: 6px;
-	text-align: right;
+	text-align: center;
 }
 
 .tabs {
         
+}
+
+.slider {
+	margin: 10px 10px 10px 10px;
+}
+
+yearLabel.{
+	margin: 10px 10px 10px 10px;
 }
 
 .addButton{
@@ -46,7 +54,6 @@ h1 {
 p {
 	text-align: right;
 }
-
 
 
 /** Most GWT widgets already have a style name defined */

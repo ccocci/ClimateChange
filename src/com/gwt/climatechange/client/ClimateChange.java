@@ -51,17 +51,16 @@ public class ClimateChange extends TabLayoutPanel implements EntryPoint {
 	public ClimateChange(){
 		
 		//Creates TabLayoutPanel
-		super(9, Style.Unit.EM);
-		worldMapMenu.setHeight("100%");		
+		super(9, Style.Unit.EM);		
 		//Creates TabLayoutPanel with two tabs
 		
 		scrollPanel.add(tablePanel);
 		add(dockLayoutPanel, "World Map");
 		add(scrollPanel, "Data Table");
 		addStyleName("tabs");
+		dockLayoutPanel.add(worldMapMenu);
 		selectTab(0);
 		
-		dockLayoutPanel.add(worldMapView);
 		//Add tabPanel to north
 		//addSouth(exportButton, 10);
 	}
