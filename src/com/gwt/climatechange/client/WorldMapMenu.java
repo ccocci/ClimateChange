@@ -169,27 +169,7 @@ public class WorldMapMenu extends DockLayoutPanel implements SliderListener {
 			
 		}
 
-	/**	private DataTable prepareData() {
-			DataTable dataTable = DataTable.create();
-			dataTable.addColumn(ColumnType.STRING, "City");
-			dataTable.addColumn(ColumnType.NUMBER, "Temperature");
-			dataTable.addColumn(ColumnType.NUMBER,"Uncertainty");
-			
-		/*	dataTable.addRows(1);
-			dataTable.setValue(0, 0, "Buenos Aires");
-			dataTable.setValue(0, 0,13);
-			dataTable.setValue(0, 0,2);
-			*/
-
-		/**	dataTable.addRows(cityAtYearData.size());
-			for (int i = 0; i < cityAtYearData.size(); i++) {
-				dataTable.setValue(i, 0, cityAtYearData.get(i).getCity());
-				dataTable.setValue(i, 1, cityAtYearData.get(i).getTemperature());
-				dataTable.setValue(i, 2, cityAtYearData.get(i).getUncertainty());
-			}
-			
-			return dataTable;
-		}*/
+	
 		/**
 		 * 
 		 * Sets the colors for markers.
@@ -228,7 +208,34 @@ public class WorldMapMenu extends DockLayoutPanel implements SliderListener {
 		}-*/;
 		
 	
-	
+		//returns ArrayList of average temperatures of each and all cities
+			public ArrayList<DataPoint> generateCityAverageList(ArrayList<DataPoint> temperaturesAtMonths) {
+				// TODO Auto-generated method stub
+				ArrayList<DataPoint> averageTemperatures = new ArrayList<DataPoint>();
+				double average;
+				double sum;
+				int i=0;
+				
+				while(i < temperaturesAtMonths.size()){
+					int numberOfTemperatures=1;
+					sum=temperaturesAtMonths.get(i).getTemperature();
+					average=sum/numberOfTemperatures;
+					
+					while(temperaturesAtMonths.get(i+1)!=null && temperaturesAtMonths.get(i).getCity()==temperaturesAtMonths.get(i+1).getCity()){
+						numberOfTemperatures++;
+						sum+=temperaturesAtMonths.get(i+1).getTemperature();
+						average=sum/numberOfTemperatures;
+						i++;
+					}
+					temperaturesAtMonths.get(i).setTemperature(average);
+					averageTemperatures.add(temperaturesAtMonths.get(i));
+					i++;
+				}
+				
+				
+				return averageTemperatures;
+				
+			}
 
 	private void fillPanels(){
 		//styleSlider();

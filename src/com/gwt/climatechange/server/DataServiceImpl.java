@@ -251,11 +251,11 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 		return this.sliderData;
 	}
 	
-	public ArrayList<DataPoint> temperatureMeasurementsCitiesAtDate(int year, int month){
+	
+	public ArrayList<DataPoint> temperatureMeasurementsCitiesAtYear(int year){
 		sliderData.clear();
 		for(DataPoint Measurement:this.data){
-			if(Measurement.getYear()+ 1900 == year && 
-					Measurement.getDate().getMonth()+1 == month){
+			if(Measurement.getYear()+ 1900 == year){
 				this.sliderData.add(Measurement);
 			}
 		}

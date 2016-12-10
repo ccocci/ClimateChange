@@ -22,7 +22,7 @@ public interface DataService extends RemoteService{
 	ArrayList<String> getCountries();
 	ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtDate(Date date);
 	ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtYear(Date date);
-	ArrayList<DataPoint> temperatureMeasurementsCitiesAtDate(int year, int month);
+	ArrayList<DataPoint> temperatureMeasurementsCitiesAtYear(int year);
 	ArrayList<DataPoint> removeCity(String city);
 	ArrayList<DataPoint> removeCountry(String country);
 	ArrayList<DataPoint> removeYears(int syear, int eyear);
