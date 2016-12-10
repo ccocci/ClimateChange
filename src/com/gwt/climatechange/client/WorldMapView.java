@@ -52,7 +52,7 @@ public class WorldMapView extends DockLayoutPanel{
 	private DataServiceAsync dataService = GWT.create(DataService.class);
 	private ArrayList<DataPoint> cityAtYearData= new ArrayList<DataPoint>();
 	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/"+INITIAL_YEAR.toString());
-
+	
 	// Create the MapView
 	public WorldMapView() {
 		super(Style.Unit.PX);
@@ -174,7 +174,7 @@ public class WorldMapView extends DockLayoutPanel{
 			}
 		};
 
-		dataService.temperatureMeasurementsOfAllCitiesAtDate(date, callback);
+		dataService.temperatureMeasurementsOfAllCitiesAtYear(INITIAL_YEAR, callback);
 
 	}
 

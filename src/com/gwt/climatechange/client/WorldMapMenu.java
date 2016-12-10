@@ -219,7 +219,7 @@ public class WorldMapMenu extends DockLayoutPanel implements SliderListener {
 				}
 			};
 
-			dataService.temperatureMeasurementsOfAllCitiesAtDate(date, callback);
+			dataService.temperatureMeasurementsOfAllCitiesAtYear(INITIAL_YEAR, callback);
 
 		}
 

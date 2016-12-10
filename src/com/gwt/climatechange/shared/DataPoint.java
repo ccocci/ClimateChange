@@ -43,6 +43,10 @@ public DataPoint(double temperature,double uncertainty,Date date, String city, S
 	public double getTemperature() {
 		return temperature;
 	}
+	
+	public void setTemperature(double temperature){
+		this.temperature = temperature;
+	}
 
 	public double getUncertainty() {
 		return uncertainty;

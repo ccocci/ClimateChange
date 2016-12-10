@@ -230,6 +230,7 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 	 */
 	public ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtDate(Date date){
 		sliderData.clear();
+		
 		for(DataPoint Measurement:this.data){
 			if(Measurement.getDate().getTime() >= date.getTime()-DAY_IN_MILLISECONDS &&
 				Measurement.getDate().getTime() <= date.getTime()+DAY_IN_MILLISECONDS){
@@ -240,7 +241,84 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 	}
 	
 	
-	public ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtYear(Date date){
+	public ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtYear(Integer year){
+		
+		sliderData.clear();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtJan = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtFeb = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtMar = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtApr = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtMay = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtJun = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtJul = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtAug = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtSep = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtOct = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtNov = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtDec = new ArrayList<DataPoint>();
+		
+		final Date DATE_JAN = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/"+year.toString());
+		final Date DATE_FEB = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/02/"+year.toString());
+		final Date DATE_MAR = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/03/"+year.toString());
+		final Date DATE_APR = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/04/"+year.toString());
+		final Date DATE_MAY = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/05/"+year.toString());
+		final Date DATE_JUN = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/06/"+year.toString());
+		final Date DATE_JUL = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/07/"+year.toString());
+		final Date DATE_AUG = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/08/"+year.toString());
+		final Date DATE_SEP = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/09/"+year.toString());
+		final Date DATE_OCT = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/10/"+year.toString());
+		final Date DATE_NOV = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/11/"+year.toString());
+		final Date DATE_DEC = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/12/"+year.toString());
+		
+		temperatureMeasurementsOfAllCitiesAtJan = temperatureMeasurementsOfAllCitiesAtDate(DATE_JAN);
+		temperatureMeasurementsOfAllCitiesAtFeb = temperatureMeasurementsOfAllCitiesAtDate(DATE_FEB);
+		temperatureMeasurementsOfAllCitiesAtMar = temperatureMeasurementsOfAllCitiesAtDate(DATE_MAR);
+		temperatureMeasurementsOfAllCitiesAtApr = temperatureMeasurementsOfAllCitiesAtDate(DATE_APR);
+		temperatureMeasurementsOfAllCitiesAtMay = temperatureMeasurementsOfAllCitiesAtDate(DATE_MAY);
+		temperatureMeasurementsOfAllCitiesAtJun = temperatureMeasurementsOfAllCitiesAtDate(DATE_JUN);
+		temperatureMeasurementsOfAllCitiesAtJul = temperatureMeasurementsOfAllCitiesAtDate(DATE_JUL);
+		temperatureMeasurementsOfAllCitiesAtAug = temperatureMeasurementsOfAllCitiesAtDate(DATE_AUG);
+		temperatureMeasurementsOfAllCitiesAtSep = temperatureMeasurementsOfAllCitiesAtDate(DATE_SEP);
+		temperatureMeasurementsOfAllCitiesAtOct = temperatureMeasurementsOfAllCitiesAtDate(DATE_OCT);
+		temperatureMeasurementsOfAllCitiesAtNov = temperatureMeasurementsOfAllCitiesAtDate(DATE_NOV);
+		temperatureMeasurementsOfAllCitiesAtDec = temperatureMeasurementsOfAllCitiesAtDate(DATE_DEC);
+		
+		double average;
+		double sum;
+		
+		for(DataPoint i:temperatureMeasurementsOfAllCitiesAtJan){
+			for(DataPoint j:temperatureMeasurementsOfAllCitiesAtFeb){
+				for(DataPoint k:temperatureMeasurementsOfAllCitiesAtMar){
+					for(DataPoint l:temperatureMeasurementsOfAllCitiesAtApr){
+						for(DataPoint m:temperatureMeasurementsOfAllCitiesAtMay){
+							for(DataPoint n:temperatureMeasurementsOfAllCitiesAtJun){
+								for(DataPoint o:temperatureMeasurementsOfAllCitiesAtJul){
+									for(DataPoint p:temperatureMeasurementsOfAllCitiesAtAug){
+										for(DataPoint q:temperatureMeasurementsOfAllCitiesAtSep){
+											for(DataPoint r:temperatureMeasurementsOfAllCitiesAtOct){
+												for(DataPoint s:temperatureMeasurementsOfAllCitiesAtNov){
+													for(DataPoint t:temperatureMeasurementsOfAllCitiesAtDec){
+														sum = i.getTemperature() + j.getTemperature() + k.getTemperature() +
+														l.getTemperature() + m.getTemperature() + n.getTemperature() +
+														o.getTemperature() + p.getTemperature() + q.getTemperature() +
+														r.getTemperature() + s.getTemperature() + t.getTemperature();
+														average = sum/12;
+														i.setTemperature(average);
+														this.sliderData.add(i);
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		/*
 		sliderData.clear();
 		for(DataPoint Measurement:this.data){
 			if(Measurement.getDate().getTime() >= date.getTime()-DAY_IN_MILLISECONDS && 
@@ -248,6 +326,7 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 				this.sliderData.add(Measurement);
 			}
 		}
+		*/
 		return this.sliderData;
 	}
 	

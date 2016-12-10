@@ -21,9 +21,8 @@ public interface DataServiceAsync {
 	void temperatureMeasurementsCityCountry(String country, String city, Date sdate, Date edate,
 			AsyncCallback<ArrayList<DataPoint>> callback);
 	void clearMeasurements(AsyncCallback<ArrayList<DataPoint>> callback);
-	void temperatureMeasurementsOfAllCitiesAtDate(Date date,
-			AsyncCallback<ArrayList<DataPoint>> callback);
-	void temperatureMeasurementsOfAllCitiesAtYear(Date date,
+	void temperatureMeasurementsOfAllCitiesAtDate(Date date, AsyncCallback<ArrayList<DataPoint>> callback);
+	void temperatureMeasurementsOfAllCitiesAtYear(Integer year,
 			AsyncCallback<ArrayList<DataPoint>> callback);
 	void temperatureMeasurementsCitiesAtDate(int year, int month, AsyncCallback<ArrayList<DataPoint>> callback);
 	void getCities(AsyncCallback<ArrayList<String>> callback);
