@@ -1,0 +1,3 @@
+# Module climatechange
+# RPC service class, partial path of RPC policy file
+com.gwt.climatechange.client.DataService, 0834E66B31DE65B3FF197D123B4D8469.gwt.rpc
