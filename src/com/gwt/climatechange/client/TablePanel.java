@@ -58,11 +58,7 @@ public class TablePanel extends VerticalPanel{
 	
 	public TablePanel() {
 		initialize();
-		//filterTable.addFilterToTable("", "", new Date(113, 0, 1), new Date(113, 11, 1));
-		//refreshMeasurementTable("", "", new Date(113, 0, 1), new Date(113, 11, 1));
 	}
-	
-
 	
 	public void initialize() {
 		filterTable.setUpFilterTable();
@@ -76,13 +72,10 @@ public class TablePanel extends VerticalPanel{
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
 			public void onSuccess(ArrayList<DataPoint> result) {
-				// TODO Auto-generated method stub
 				updateMeasurementTable(result);
 			}
 		};
@@ -98,7 +91,6 @@ public class TablePanel extends VerticalPanel{
 		AsyncCallback<ArrayList<String>> callback = new AsyncCallback<ArrayList<String>>(){
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
 			}
 
 			@Override
@@ -111,15 +103,13 @@ public class TablePanel extends VerticalPanel{
 		
 		AsyncCallback<ArrayList<String>> callbackCountry = new AsyncCallback<ArrayList<String>>(){
 			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub	
+			public void onFailure(Throwable caught) {	
 			}
 
 			@Override
 			public void onSuccess(ArrayList<String> result) {
 				addCountryNames(result);
 			}
-			
 		};
 		dataSvc.getCountries(callbackCountry);
 		newSuggestBoxCountry = new SuggestBox(countryNames);
@@ -159,7 +149,6 @@ public class TablePanel extends VerticalPanel{
 	    add(discPanel);
 		add(measurementTable.getMeasurementTable());
 		
-		
 	    // Move cursor focus to the city filter box.
 	    newSuggestBoxCountry.setFocus(true);
 
@@ -181,14 +170,12 @@ public class TablePanel extends VerticalPanel{
 	   		}
 	   	});
 	       
-	    
 	   // Listen for mouse events on the Add button.
 	    addFilterButton.addClickHandler(new ClickHandler() {
 	    	public void onClick(ClickEvent event) {
 	    		addFilter();
 	    	}
 	    });
-	    
 	    
 	    // Listen for keyboard events on startYear and endYear boxes, and accept only numbers/backspace
 	   	integerBoxStartYear.addKeyPressHandler(new KeyPressHandler() {
@@ -241,6 +228,7 @@ public class TablePanel extends VerticalPanel{
 	   * Add filter to FlexTable. Executed when the user clicks the addFilterButton or
 	   * presses enter in one of the suggestBoxes.
 	   */
+	
 	private void addFilter() {
 		//Get values from boxes and do capitalization for Strings
 		final String country = newSuggestBoxCountry.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCountry.getText().trim().substring(1);
@@ -257,6 +245,7 @@ public class TablePanel extends VerticalPanel{
 	    }else{
 	    	sdate = null;
 	    }
+	    
 		// Determine End Date
 	    if(eyear != null){
 			String eD = endMonth.getSelectedIndex()+1 + "/1/" + eyear;
@@ -333,6 +322,7 @@ public class TablePanel extends VerticalPanel{
 	}
 	
 	private void addInitialFilter() {
+		
 		//Get values from boxes and do capitalization for Strings
 		final String country = "";
 		final String city = "";
@@ -361,18 +351,7 @@ public class TablePanel extends VerticalPanel{
 				measurementTable.clearMeasurementTable();
 			}
 		});
-		
-	/*	filterTable.getCurrentRowCountry(country).getRemoveButton().addClickHandler(new ClickHandler(){
-			public void onClick(ClickEvent event){
-				//removeCountryFromMeasurementTable(country);
-				filterTable.removeFilterFromTable(city);
-				measurementTable.clearMeasurementTable();
-			}
-		});
-	      */
-	  
-	    		addData(city, sdate, edate);
-	    		        
+	    addData(city, sdate, edate);	        
 	}
 	
 	/**
@@ -389,7 +368,6 @@ public class TablePanel extends VerticalPanel{
 		AsyncCallback<ArrayList<DataPoint>> callback = new AsyncCallback<ArrayList<DataPoint>>() {
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub	
 			}
 
 			@Override
@@ -424,7 +402,6 @@ public class TablePanel extends VerticalPanel{
 		}
 	}
 	
-	
 	protected void updateMeasurementTable(ArrayList<DataPoint> temperatureMeasurements) {
 		for (DataPoint temperatureMeasurement : temperatureMeasurements) {
 			updateMeasurementTable(temperatureMeasurement);
@@ -442,7 +419,6 @@ public class TablePanel extends VerticalPanel{
 		AsyncCallback<ArrayList<DataPoint>> callback = new AsyncCallback<ArrayList<DataPoint>>() {
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
 			}
 
 			@Override
@@ -460,7 +436,6 @@ public class TablePanel extends VerticalPanel{
 		AsyncCallback<ArrayList<DataPoint>> callback = new AsyncCallback<ArrayList<DataPoint>>() {
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub	
 			}
 			
 			@Override
@@ -478,7 +453,6 @@ public class TablePanel extends VerticalPanel{
 		AsyncCallback<ArrayList<DataPoint>> callback = new AsyncCallback<ArrayList<DataPoint>>() {
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub	
 			}
 			
 			@Override
@@ -488,6 +462,7 @@ public class TablePanel extends VerticalPanel{
 		};
 		dataSvc.removeYears(syear,eyear, callback);
 	}
+	
 	/**
 	 * Adds all city names in the given ArrayList to the suggestion box
 	 * @pre -
