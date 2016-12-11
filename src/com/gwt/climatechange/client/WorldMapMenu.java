@@ -42,7 +42,7 @@ public class WorldMapMenu extends DockLayoutPanel implements SliderListener {
 
 	private VerticalPanel sliderPanel= new VerticalPanel();
 	private HorizontalPanel horizontalSliderPanel= new HorizontalPanel();
-	private Label yearLabel= new Label("Displayed Year: ");
+	private Label yearLabel= new Label("Selected Year: ");
 	private Slider slider= new Slider("Slider",1880,2013,2013);
 	private Label sliderValue= new Label(INITIAL_YEAR.toString() + " ");
 

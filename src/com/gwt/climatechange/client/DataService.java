@@ -2,11 +2,21 @@ package com.gwt.climatechange.client;
 
 import java.util.ArrayList;
 import java.util.Date;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-
 import com.gwt.climatechange.shared.DataPoint;
+
+/**
+* 
+* The interface DataService belongs to the RPC of Data.
+* 
+* @author Carla Coccia
+* @history  30-11-2016 CC Methods for RPC of Data
+* 			09-12-2016 LW Appending methods for filter
+* @version  09-12-2016 LW Version 1
+* @responsabilities Defines all methods to implement in DataServiceImpl to use for the AsyncCallback.
+*
+*/
 
 @RemoteServiceRelativePath("data")
 public interface DataService extends RemoteService{
