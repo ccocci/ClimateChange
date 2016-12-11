@@ -39,7 +39,6 @@ import com.google.gwt.user.client.ui.DockLayoutPanel;
 
 public class ClimateChange extends TabLayoutPanel implements EntryPoint {
 	
-	private WorldMapView worldMapView = new WorldMapView();
 	private WorldMapMenu worldMapMenu = new WorldMapMenu();
 	private DockLayoutPanel dockLayoutPanel = new DockLayoutPanel(Style.Unit.EM);
 	private TablePanel tablePanel = new TablePanel();
