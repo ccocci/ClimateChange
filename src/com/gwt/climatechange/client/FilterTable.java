@@ -16,7 +16,7 @@ public class FilterTable {
 		filterFlexTable.setText(0, 1, "City");
 		filterFlexTable.setText(0, 2, "Start Date");
 		filterFlexTable.setText(0, 3, "End Date");
-		filterFlexTable.setText(0, 4, "Remove");
+		filterFlexTable.setText(0, 4, "Delete");
 		
 		
 		// Add styles to elements in the filter table.
@@ -45,20 +45,20 @@ public class FilterTable {
 	      if(country != ""){
 	    	  filterFlexTable.setText(row, 0, country);
 	      }else{
-	    	  filterFlexTable.setText(row, 0, "all");
+	    	  filterFlexTable.setText(row, 0, "All");
 	      }
 	      if(city != ""){
 		      filterFlexTable.setText(row, 1, city); 
 	      }else{
-	    	  filterFlexTable.setText(row, 1, "all");
+	    	  filterFlexTable.setText(row, 1, "All");
 	      }
 	      if(sdate != null && edate != null){
 	    	  filterFlexTable.setText(row, 2, DateTimeFormat.getFormat("dd/MM/yyyy").format(sdate));
 	    	  filterFlexTable.setText(row, 3, DateTimeFormat.getFormat("dd/MM/yyyy").format(edate));
 	      }
 	      if(sdate == null && edate == null){
-	    	  filterFlexTable.setText(row, 2, "all");
-	    	  filterFlexTable.setText(row, 3, "all");
+	    	  filterFlexTable.setText(row, 2, "All");
+	    	  filterFlexTable.setText(row, 3, "All");
 	      }
 	      filterFlexTable.setWidget(row, 4, currentFilterRow.getRemoveButton());	     
 	     

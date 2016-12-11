@@ -25,9 +25,6 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 import com.gwt.climatechange.shared.DataPoint;
 
-
-
-
 /**
  * This class manages the user interface for the table view.
  * @author		Lina Witzel

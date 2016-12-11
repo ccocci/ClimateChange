@@ -2,65 +2,32 @@ package com.gwt.climatechange.client;
 
 import java.util.ArrayList;
 import java.util.Date;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.event.dom.client.KeyDownHandler;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.ToggleButton;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.googlecode.gwt.charts.client.geochart.GeoChart;
 import com.gwt.climatechange.client.slider.Slider;
 import com.gwt.climatechange.shared.DataPoint;
-
 import com.gwt.climatechange.client.slider.SliderEvent;
 import com.gwt.climatechange.client.slider.SliderListener;
-
-import java.util.ArrayList;
-import java.util.Date;
-
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArrayString;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.i18n.client.DateTimeFormat;
-//import com.googlecode.gwt.charts.client.*;
 import com.googlecode.gwt.charts.client.ChartLoader;
 import com.googlecode.gwt.charts.client.ChartPackage;
 import com.googlecode.gwt.charts.client.ColumnType;
 import com.googlecode.gwt.charts.client.DataTable;
-import com.googlecode.gwt.charts.client.geochart.GeoChart;
 import com.googlecode.gwt.charts.client.options.DisplayMode;
-
-//import com.gwt.climatechangeapp.client.WorldMapView.CityMean;
-
 import com.googlecode.gwt.charts.client.geochart.GeoChartColorAxis;
 import com.googlecode.gwt.charts.client.geochart.GeoChartOptions;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
-
-import com.gwt.climatechange.shared.DataPoint;
-
 
 public class WorldMapMenu extends DockLayoutPanel implements SliderListener {
+	
 	// create panels
-	
-
-	
 	private GeoChart geoChart;
 	private Integer INITIAL_YEAR=2013;
 	private double maxTemperature=40;
@@ -210,7 +177,6 @@ public class WorldMapMenu extends DockLayoutPanel implements SliderListener {
 	
 		//returns ArrayList of average temperatures of each and all cities
 			public ArrayList<DataPoint> generateCityAverageList(ArrayList<DataPoint> temperaturesAtMonths) {
-				// TODO Auto-generated method stub
 				ArrayList<DataPoint> averageTemperatures = new ArrayList<DataPoint>();
 				double average;
 				double sum;
