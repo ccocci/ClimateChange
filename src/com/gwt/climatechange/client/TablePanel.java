@@ -150,18 +150,6 @@ public class TablePanel extends VerticalPanel{
 	    addPanel.add(addFilterButton);
 	    addPanel.addStyleName("addPanel");
 		
-	    /*
-		// Assemble Add filter panel.
-		addPanel.add(newSuggestBoxCountry);
-	    addPanel.add(newSuggestBoxCity);
-	    addPanel.add(integerBoxStartYear);
-	    addPanel.add(startMonth);
-	    addPanel.add(integerBoxEndYear);
-	    addPanel.add(endMonth);
-	    addPanel.add(addFilterButton);
-	    addPanel.addStyleName("addPanel");
-	    */
-		
 	    //Assemble filter and disclosure Panel.
 	    filterPanel.add(filterTable.getFilterTable());
 	    filterPanel.add(addPanel);
@@ -227,8 +215,8 @@ public class TablePanel extends VerticalPanel{
 	   	// Add placeHolders to the text boxes	
 	   	newSuggestBoxCountry.getElement().setAttribute("placeHolder", "Enter Country");
 	    newSuggestBoxCity.getElement().setAttribute("placeHolder","Enter City");
-	    integerBoxStartYear.getElement().setAttribute("placeHolder", "Enter StartYear");
-	    integerBoxEndYear.getElement().setAttribute("placeholder", "Enter EndYear");
+	    integerBoxStartYear.getElement().setAttribute("placeHolder", "Enter Start Year");
+	    integerBoxEndYear.getElement().setAttribute("placeholder", "Enter End Year");
 	   	
 	    // Listen for keyboard events in the suggest box for cities.
 	    integerBoxEndYear.addKeyDownHandler(new KeyDownHandler() {
