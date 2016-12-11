@@ -36,8 +36,10 @@ import com.gwt.climatechange.shared.DataPoint;
 public class TablePanel extends VerticalPanel{
 	private FilterTable filterTable = new FilterTable();
 	private MeasurementTable measurementTable = new MeasurementTable();
-	private HorizontalPanel addPanel = new HorizontalPanel();
+	private VerticalPanel addPanel = new VerticalPanel();
 	private VerticalPanel filterPanel= new VerticalPanel();
+	private HorizontalPanel startYearPanel = new HorizontalPanel();
+	private HorizontalPanel endYearPanel = new HorizontalPanel();
 	private DisclosurePanel discPanel= new DisclosurePanel("Filter data");
 	private SuggestBox newSuggestBoxCity = new SuggestBox();
 	private SuggestBox newSuggestBoxCountry = new SuggestBox();
@@ -49,6 +51,7 @@ public class TablePanel extends VerticalPanel{
 	private DataServiceAsync dataSvc = GWT.create(DataService.class);
 	MultiWordSuggestOracle cityNames = new MultiWordSuggestOracle();
 	MultiWordSuggestOracle countryNames = new MultiWordSuggestOracle();
+	
 	private final String[] MONTHS = {"January","February","March","April","May","June",
 	                           "July","August","September","October","November","December"};
 
@@ -136,6 +139,18 @@ public class TablePanel extends VerticalPanel{
 		integerBoxStartYear.setStyleName("box");
 		addFilterButton.setStyleName("addButton");
 		
+		addPanel.add(newSuggestBoxCountry);
+	    addPanel.add(newSuggestBoxCity);
+	    startYearPanel.add(integerBoxStartYear);
+	    startYearPanel.add(startMonth);
+	    addPanel.add(startYearPanel);
+	    endYearPanel.add(integerBoxEndYear);
+	    endYearPanel.add(endMonth);
+	    addPanel.add(endYearPanel);
+	    addPanel.add(addFilterButton);
+	    addPanel.addStyleName("addPanel");
+		
+	    /*
 		// Assemble Add filter panel.
 		addPanel.add(newSuggestBoxCountry);
 	    addPanel.add(newSuggestBoxCity);
@@ -145,7 +160,8 @@ public class TablePanel extends VerticalPanel{
 	    addPanel.add(endMonth);
 	    addPanel.add(addFilterButton);
 	    addPanel.addStyleName("addPanel");
-	    
+	    */
+		
 	    //Assemble filter and disclosure Panel.
 	    filterPanel.add(filterTable.getFilterTable());
 	    filterPanel.add(addPanel);
