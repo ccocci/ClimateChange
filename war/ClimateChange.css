@@ -4,8 +4,8 @@ body{
 
 .tableHeader {
 	border: 1px solid silver;
-	padding: 5px;
-	background-color: #aacdd6;
+	padding: 15px;
+	background-color: #94add6;
 	color: #000000;
 	font-style: italic;
 }
