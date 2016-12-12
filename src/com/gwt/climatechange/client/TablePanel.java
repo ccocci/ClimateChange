@@ -30,9 +30,10 @@ import com.gwt.climatechange.shared.DataPoint;
  * @history	31-11-2016 CC Initialization
  * 			10-12-2016 CC Actualization with filters
  * @version 10-12-2016 CC Version 1
- * @responsibilities Displaying table filled with data according to filter.
+ * @responsibilities Displaying table with filters and table filled with data according to filter.
  * 
  */
+
 public class TablePanel extends VerticalPanel{
 	private FilterTable filterTable = new FilterTable();
 	private DataTable measurementTable = new DataTable();

@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.FlexTable;
 * @history	09-12-2016 LL SetUp, Filling, Removing Table
 * 			10-12-2016 SC Corrections
 * @version 	10-12-2016 SC Version 1
-* @responsabilities This class creates a new Row for the FilterTable.
+* @responsabilities managing applied filters
 *
 */
 

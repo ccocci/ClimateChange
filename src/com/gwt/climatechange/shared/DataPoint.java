@@ -3,10 +3,19 @@ package com.gwt.climatechange.shared;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
+/**
+ * 
+ * This class manages all values for a DataPoint to use for the data import 
+ * and filling in the data in the worldMap and dataTable
+ * 
+ * @author Lina Witzel
+ * @history 30-11-2016 LW First version
+ * @version 30-11-2016 LW Version 1
+ * @responsibilities Manages all data.
+ * 
+ */
 
 public class DataPoint implements Serializable{
-	
 	
 	private String city;
 	private String country;
@@ -16,10 +25,14 @@ public class DataPoint implements Serializable{
 	private double uncertainty;
 	private Date date;
 	
-/*Empty constructor needed for serialization*/
+/*Empty constructor for serialization*/
 public DataPoint(){}
 
-public DataPoint(double temperature,double uncertainty,Date date, String city, String country, double latitude, double longitude) {
+/**
+ * Constructor to set all data for one DataPoint
+ */
+
+	public DataPoint(double temperature,double uncertainty,Date date, String city, String country, double latitude, double longitude) {
 		
 		this.city=city;
 		this.country = country;
@@ -27,10 +40,14 @@ public DataPoint(double temperature,double uncertainty,Date date, String city, S
 		this.longitude = longitude;
 		this.temperature = temperature;
 		this.uncertainty = uncertainty;
-		this.date= date;
+		this.date = date;
 	}
-
-
+	
+	/**
+	 * Getters for city, country, latitude, longitude, temperature, uncertainty and date
+	 * Setter for temperature (to set average temperature seperately)
+	 */
+	
 	public String getCountry() {
 		return country;
 	}
@@ -43,7 +60,6 @@ public DataPoint(double temperature,double uncertainty,Date date, String city, S
 	public double getTemperature() {
 		return temperature;
 	}
-
 	public double getUncertainty() {
 		return uncertainty;
 	}
