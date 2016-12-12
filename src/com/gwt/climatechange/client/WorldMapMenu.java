@@ -118,8 +118,8 @@ public class WorldMapMenu extends DockLayoutPanel implements SliderListener {
 		dataTable.addRows(cityAtYearData.size());
 		for (int i = 0; i < cityAtYearData.size(); i++) {
 			dataTable.setValue(i, 0, cityAtYearData.get(i).getCity());
-			dataTable.setValue(i, 1, cityAtYearData.get(i).getTemperature());
-			dataTable.setValue(i, 2, cityAtYearData.get(i).getUncertainty());
+			dataTable.setValue(i, 1, Math.round(cityAtYearData.get(i).getTemperature()*100)/100.0);
+			dataTable.setValue(i, 2, Math.round(cityAtYearData.get(i).getUncertainty()*100)/100.0);
 		}
 
 		// set GeoChart options
