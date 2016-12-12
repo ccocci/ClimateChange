@@ -13,8 +13,9 @@ import java.util.Date;
 import com.gwt.climatechange.shared.DataPoint;
 
 /**
- * This class handles the parsing of the CSV file.
- * @author		Sophy Chong
+ * This class handles the parsing of the CSV file to be able to import the data.
+ * 
+ * @author Lina Witzel
  * @history 	2016-08-11 JL First version
  * @version 	2016-08-11 JL 0.1.0
  * @responsibilities

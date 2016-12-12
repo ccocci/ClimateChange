@@ -19,6 +19,8 @@ import com.google.gwt.user.client.Event;
 
 /**
  * A class to hold event values for the Slider
+ * 
+ * @author Carla Coccia
  */
 public class SliderEvent
 {

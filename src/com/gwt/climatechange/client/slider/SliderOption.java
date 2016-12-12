@@ -17,6 +17,8 @@ package com.gwt.climatechange.client.slider;
 
 /**
  * An enumeration of all the options you can set for a slider
+ * 
+ * @author Carla Coccia
  */
 public enum SliderOption
 {

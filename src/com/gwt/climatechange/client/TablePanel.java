@@ -2,7 +2,6 @@ package com.gwt.climatechange.client;
 
 import java.util.ArrayList;
 import java.util.Date;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -11,7 +10,6 @@ import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
-import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -22,20 +20,22 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.MultiWordSuggestOracle;
 import com.google.gwt.user.client.ui.SuggestBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-
 import com.gwt.climatechange.shared.DataPoint;
 
 /**
+ * 
  * This class manages the user interface for the table view.
- * @author		Lina Witzel
- * @history 	2016-25-11 JL First version
- * @version 	2016-25-11 JL 0.1.0
- * @responsibilities
- * 				Keeps track of all panels, widgets and of the functionality of the table view.
+ * 
+ * @author Carla Coccia
+ * @history	31-11-2016 CC Initialization
+ * 			10-12-2016 CC Actualization with filters
+ * @version 10-12-2016 CC Version 1
+ * @responsibilities Displaying table filled with data according to filter.
+ * 
  */
 public class TablePanel extends VerticalPanel{
 	private FilterTable filterTable = new FilterTable();
-	private MeasurementTable measurementTable = new MeasurementTable();
+	private DataTable measurementTable = new DataTable();
 	private VerticalPanel addPanel = new VerticalPanel();
 	private VerticalPanel filterPanel= new VerticalPanel();
 	private HorizontalPanel startYearPanel = new HorizontalPanel();
@@ -55,10 +55,17 @@ public class TablePanel extends VerticalPanel{
 	private final String[] MONTHS = {"January","February","March","April","May","June",
 	                           "July","August","September","October","November","December"};
 
-	
 	public TablePanel() {
 		initialize();
 	}
+	
+	/**
+	 * Method that initializes the table by clearing the previous filtered data, filling the table, setting the styling, 
+	 * assembling the filter and main panel and handling key events.
+	 * 
+	 * @pre 	-
+	 * @post 	Table (including FilterTable) is visible and filled with the data according to default or filter.
+	 */
 	
 	public void initialize() {
 		filterTable.setUpFilterTable();
@@ -80,7 +87,6 @@ public class TablePanel extends VerticalPanel{
 			}
 		};
 		dataSvc.clearMeasurements(clearCallback);
-		
 		
 		// Add city names to the suggestBox
 		if(dataSvc == null)
@@ -129,6 +135,7 @@ public class TablePanel extends VerticalPanel{
 		integerBoxStartYear.setStyleName("box");
 		addFilterButton.setStyleName("addButton");
 		
+		//Assemble filter panels
 		addPanel.add(newSuggestBoxCountry);
 	    addPanel.add(newSuggestBoxCity);
 	    startYearPanel.add(integerBoxStartYear);
@@ -140,16 +147,16 @@ public class TablePanel extends VerticalPanel{
 	    addPanel.add(addFilterButton);
 	    addPanel.addStyleName("addPanel");
 		
-	    //Assemble filter and disclosure Panel.
+	    //Assemble filter and disclosure panel
 	    filterPanel.add(filterTable.getFilterTable());
 	    filterPanel.add(addPanel);
 	    discPanel.setContent(filterPanel);
 	    
-	    // Assemble Main panel.
+	    // Assemble main panel
 	    add(discPanel);
 		add(measurementTable.getMeasurementTable());
 		
-	    // Move cursor focus to the city filter box.
+	    // Move cursor focus to the city filter box
 	    newSuggestBoxCountry.setFocus(true);
 
 	    // Listen for keyboard events on cityBox and countryBox and accept only letters
@@ -161,6 +168,7 @@ public class TablePanel extends VerticalPanel{
 	   			}
 	   		}
 	    });
+	   	
 	   	newSuggestBoxCountry.addKeyPressHandler(new KeyPressHandler(){
 	   		@Override
 	   		public void onKeyPress(KeyPressEvent event){
@@ -188,6 +196,7 @@ public class TablePanel extends VerticalPanel{
 	   			}
 			}
 	    });
+	   	
 	   	integerBoxEndYear.addKeyPressHandler(new KeyPressHandler() {
 	   		@Override
 			public void onKeyPress(KeyPressEvent event) {
@@ -199,13 +208,13 @@ public class TablePanel extends VerticalPanel{
 			}
 	    });
 	   	
-	   	// Add placeHolders to the text boxes	
+	   	// Add placeholders to the text boxes	
 	   	newSuggestBoxCountry.getElement().setAttribute("placeHolder", "Enter Country");
 	    newSuggestBoxCity.getElement().setAttribute("placeHolder","Enter City");
 	    integerBoxStartYear.getElement().setAttribute("placeHolder", "Enter Start Year");
 	    integerBoxEndYear.getElement().setAttribute("placeholder", "Enter End Year");
 	   	
-	    // Listen for keyboard events in the suggest box for cities.
+	    // Listen for keyboard events in the suggest box for cities
 	    integerBoxEndYear.addKeyDownHandler(new KeyDownHandler() {
 	    	public void onKeyDown(KeyDownEvent event) {
 	    		if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
@@ -213,6 +222,7 @@ public class TablePanel extends VerticalPanel{
 	    		}
 	    	}
 	    });	   
+	    
 	    integerBoxStartYear.addKeyDownHandler(new KeyDownHandler() {
 	    	public void onKeyDown(KeyDownEvent event) {
 	    		if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
@@ -225,9 +235,12 @@ public class TablePanel extends VerticalPanel{
 	}
 	
 	/**
-	   * Add filter to FlexTable. Executed when the user clicks the addFilterButton or
-	   * presses enter in one of the suggestBoxes.
-	   */
+	 * Method that adds the filter to the flexTable when user clicks button or presses enter in one of the suggestBoxes.
+	 * 
+	 * @pre 	newSuggestBoxCountry != null && newSuggestBoxCity != null && integerBoxStartYear != null && 
+	 * 			integerBoxEndYear != null
+	 * @post 	filter is added, data is displayed
+	 */
 	
 	private void addFilter() {
 		//Get values from boxes and do capitalization for Strings
@@ -265,6 +278,7 @@ public class TablePanel extends VerticalPanel{
 				}
 			}
 		}
+		
 		for(String s : filterTable.getCurrentCountries()){
 			if(!s.equals("")){
 				if (s.toUpperCase().equals(country.toUpperCase())){
@@ -301,6 +315,7 @@ public class TablePanel extends VerticalPanel{
 				}
 			}
 		});
+		
 		filterTable.getCurrentRowCountry(country).getRemoveButton().addClickHandler(new ClickHandler(){
 			public void onClick(ClickEvent event){
 				if(country != "" && city == ""){
@@ -317,9 +332,16 @@ public class TablePanel extends VerticalPanel{
 			}
 		});
 	  
-	    		addData(city, sdate, edate);
+	    addData(city, sdate, edate);
 	    		        
 	}
+	
+	/**
+	 * Method that adds the initial filter for the table.
+	 * 
+	 * @pre 	filterTable != null
+	 * @post 	initial filter is added and data is displayed
+	 */
 	
 	private void addInitialFilter() {
 		
@@ -355,16 +377,16 @@ public class TablePanel extends VerticalPanel{
 	}
 	
 	/**
-	 * Refreshed the flex Table containing the measurements
+	 * Refreshes the flexTable containing the data
 	 * @pre -
 	 * @post -
-	 * @param -
-	 * @return -
 	 */
 	protected void refreshMeasurementTable(String country, String city, Date sdate, Date edate) {
+		
 		if (dataSvc == null) {
 	    	dataSvc = GWT.create(DataService.class);
 	    }
+		
 		AsyncCallback<ArrayList<DataPoint>> callback = new AsyncCallback<ArrayList<DataPoint>>() {
 			@Override
 			public void onFailure(Throwable caught) {
@@ -375,6 +397,7 @@ public class TablePanel extends VerticalPanel{
 				updateMeasurementTable(result);	
 			}
 		};
+		
 		if(sdate != null && edate != null){
 			if(country == "" && city != ""){
 				dataSvc.temperatureMeasurements(city, sdate, edate, callback);
@@ -389,6 +412,7 @@ public class TablePanel extends VerticalPanel{
 				dataSvc.temperatureMeasurementsYears(sdate.getYear()+1900, edate.getYear()+1900, callback);
 			}
 		}
+		
 		if(sdate == null && edate == null){
 			if(country == "" && city != ""){
 				dataSvc.temperatureMeasurements(city, callback);
@@ -402,6 +426,10 @@ public class TablePanel extends VerticalPanel{
 		}
 	}
 	
+	/**
+	 * Methods to update table
+	 */
+	
 	protected void updateMeasurementTable(ArrayList<DataPoint> temperatureMeasurements) {
 		for (DataPoint temperatureMeasurement : temperatureMeasurements) {
 			updateMeasurementTable(temperatureMeasurement);
@@ -411,6 +439,10 @@ public class TablePanel extends VerticalPanel{
 	private void updateMeasurementTable(DataPoint temperatureMeasurement) {
 		measurementTable.fillTable(temperatureMeasurement);
 	}
+	
+	/**
+	 * Methods to remove data from table
+	 */
 	
 	protected void removeFromMeasurementTable(String city){
 		if (dataSvc == null) {
@@ -464,11 +496,11 @@ public class TablePanel extends VerticalPanel{
 	}
 	
 	/**
-	 * Adds all city names in the given ArrayList to the suggestion box
+	 * Adds all city/country names in the given ArrayList to the suggestion box
+	 * 
 	 * @pre -
-	 * @post -
 	 * @param ArrayList<String> names: the list of names to add
-	 * @return -
+	 * @post -
 	 */
 	protected void addCityNames(ArrayList<String> names){
 		cityNames.addAll(names);
@@ -478,11 +510,21 @@ public class TablePanel extends VerticalPanel{
 		countryNames.addAll(names);
 	}
 	
+	/**
+	 * Adds data to the table according to filter.
+	 * 
+	 * @pre filterTable != null && city != null && sdate != null && edate != null
+	 * @post table is filled with data
+	 */
+	
 	public void addData(String city, Date sdate, Date edate){
 		FilterRow currentRow = filterTable.getCurrentRow(city);
 		refreshMeasurementTable(currentRow.getCountry(),currentRow.getCity(),currentRow.getStartDate(),currentRow.getEndDate());
-		//measurementTable.clearMeasurementTable();
 	}
+	
+	/**
+	 * Methods to remove data (either depending on city, country or year)
+	 */
 	
 	public void removeData(String city){
 		removeFromMeasurementTable(city);

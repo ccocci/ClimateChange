@@ -18,6 +18,7 @@ package com.gwt.climatechange.client.slider;
 /**
  * The listener interface for the sliders
  *
+ * @author Carla Coccia
  */
 public interface SliderListener
 {
