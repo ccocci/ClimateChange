@@ -283,29 +283,6 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 	 * 
 	 */
 	
-	public ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtYear(Date date){
-		sliderData.clear();
-		for(DataPoint Measurement:this.data){
-			if(Measurement.getDate().getTime() >= date.getTime()-DAY_IN_MILLISECONDS && 
-					Measurement.getDate().getTime() <= new Date((date.getMonth()+1)+"/"+date.getDate()+"/"+(date.getYear()+1901)).getTime()+DAY_IN_MILLISECONDS){
-				this.sliderData.add(Measurement);
-			}
-		}
-		return this.sliderData;
-	}
-	
-	/**
-	 * 
-	 * Filters data for all city at a specific year.
-	 * 
-	 * @pre 	data != null && filteredData != null && date != null
-	 * @param	sliderData contains all cities for which the data should be extracted
-	 * 			date is the date for all the measurements
-	 * @post	the asked data is stored in an ArrayList
-	 * @return	ArrayList sliderData contains all DataPoints for all cities at a specific year.
-	 * 
-	 */
-	
 	public ArrayList<DataPoint> temperatureMeasurementsCitiesAtYear(int year){
 		sliderData.clear();
 		for(DataPoint Measurement:this.data){

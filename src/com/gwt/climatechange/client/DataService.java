@@ -31,7 +31,6 @@ public interface DataService extends RemoteService{
 	ArrayList<String> getCities();
 	ArrayList<String> getCountries();
 	ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtDate(Date date);
-	ArrayList<DataPoint> temperatureMeasurementsOfAllCitiesAtYear(Date date);
 	ArrayList<DataPoint> temperatureMeasurementsCitiesAtYear(int year);
 	ArrayList<DataPoint> removeCity(String city);
 	ArrayList<DataPoint> removeCountry(String country);
