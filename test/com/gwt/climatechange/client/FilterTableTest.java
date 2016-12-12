@@ -1,14 +1,19 @@
 package com.gwt.climatechange.client;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
+import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.ui.FlexTable;
 
-public class FilterTableTest {
+public class FilterTableTest extends GWTTestCase{
 	
 	FlexTable testFlexTable = new FlexTable();
 	private final String TEST_CITY = "Berlin";
 	private final String TEST_COUNTRY = "Germany";
+	
+	@Override
+	public String getModuleName() {
+		return "com.gwt.climatechange.FilterTable";
+	}
 	
 	@Test
 	public void testSetUp(){

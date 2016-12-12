@@ -1,10 +1,11 @@
 package com.gwt.climatechange.shared;
 
-import static org.junit.Assert.*;
 import java.util.Date;
 import org.junit.Test;
 
-public class DataPointTest {
+import com.google.gwt.junit.client.GWTTestCase;
+
+public class DataPointTest extends GWTTestCase{
 
 	private final String TEST_CITY = "Berlin";
 	private final String TEST_COUNTRY = "Germany";
@@ -14,6 +15,11 @@ public class DataPointTest {
 	private final double TEST_TEMPERATURE = 22.031;
 	private final double TEST_TEMPERATURE_NEW = 21.034;
 	private final double TEST_UNCERTAINTY = 0.345;
+	
+	@Override
+	public String getModuleName() {
+		return "com.gwt.climatechange.DataPointTest";
+	}
 	
 	@Test
 	public void testDataPointEmpty(){

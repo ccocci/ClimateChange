@@ -1,13 +1,9 @@
 package com.gwt.climatechange.client.slider;
 
 import org.junit.Test;
+import com.google.gwt.junit.client.GWTTestCase;
 
-import com.google.gwt.json.client.JSONObject;
-import com.gwt.climatechange.server.DataServiceImpl;
-
-import static org.junit.Assert.*;
-
-public class SliderTest {
+public class SliderTest extends GWTTestCase{
 
 	private final String ID = "test";
 	private final int MIN = 0;
@@ -15,6 +11,11 @@ public class SliderTest {
 	private final int DEFAULT_VALUE = 8;
 	private final int[] DEFAULT_VALUES = {2,3,4};
 	private final int INDEX = 1;
+	
+	@Override
+	public String getModuleName() {
+		return "com.gwt.climatechange.Slider";
+	}
 	
 	@Test
 	public void testSliderAll(){

@@ -1,11 +1,15 @@
 package com.gwt.climatechange.client;
 
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.Test;
+import com.google.gwt.junit.client.GWTTestCase;
 
-public class DataTableTest {
+public class DataTableTest extends GWTTestCase{
 
+	@Override
+	public String getModuleName() {
+		return "com.gwt.climatechange.DataTable";
+	}
+	
 	@Test
 	public void testMeasurementTableSetUp(){
 		DataTable table = new DataTable();

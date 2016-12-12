@@ -1,0 +1,4 @@
+# Module com.gwt.climatechange.ClimateChange.JUnit
+# RPC service class, partial path of RPC policy file
+com.google.gwt.junit.client.impl.JUnitHost, 96393FD5B90EFD77EACE5B4F721C3D47.gwt.rpc
+com.google.gwt.logging.shared.RemoteLoggingService, 48E4941B05A645B6222240886476B9F8.gwt.rpc

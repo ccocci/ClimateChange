@@ -1,42 +1,17 @@
 package com.gwt.climatechange.server;
 
-import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import com.gwt.climatechange.shared.DataPoint;
+import com.google.gwt.junit.client.GWTTestCase;
 
-public class CSVParserTest {
-	private final String testFileName = "war/csvParserTest.csv";
+public class CSVParserTest extends GWTTestCase{
 	private CSVParser parser;
-	
 
-	@Before
-	public void setUp() {
-		parser = new CSVParser();
-	}
-	
-	@After
-	public void tearDown() {
-		parser = null;
-	}
-
-	@Test
-	public void testParseCSVNotNullWithTestFile() throws IOException, ParseException {
-		ArrayList<DataPoint> tempMeasurs = parser.parseCSV(testFileName);
-		assertNotNull(tempMeasurs);
-	}
-
-	@Test
-	public void testParseCSVNotEmptyWithTestFile() throws IOException, ParseException {
-		ArrayList<DataPoint> tempMeasurs = parser.parseCSV(testFileName);
-		assertFalse(tempMeasurs.isEmpty());
+	@Override
+	public String getModuleName() {
+		return "com.gwt.climatechange.CSVParser";
 	}
 	
 	@Test(expected = FileNotFoundException.class)  

@@ -6,13 +6,19 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import com.google.gwt.junit.client.GWTTestCase;
 
-public class FilterRowTest {
+public class FilterRowTest extends GWTTestCase{
 	
 	private final String TEST_CITY = "Berlin";
 	private final String TEST_COUNTRY = "Germany";
 	private final Date START_DATE = new Date(2000, 8, 1);
 	private final Date END_DATE = new Date(2000, 9, 1);
+	
+	@Override
+	public String getModuleName() {
+		return "com.gwt.climatechange.FilterRow";
+	}
 	
 	@Test
 	public void testFilterRowAll(){
@@ -39,7 +45,7 @@ public class FilterRowTest {
 	}
 	
 	@Test
-	public void testGetStartDae(){
+	public void testGetStartDate(){
 		FilterRow row = new FilterRow(TEST_COUNTRY, TEST_CITY, START_DATE, END_DATE);
 		assertEquals(START_DATE, row.getStartDate());
 	}
