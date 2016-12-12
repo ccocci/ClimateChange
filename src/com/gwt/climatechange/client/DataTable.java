@@ -79,8 +79,8 @@ public class DataTable {
 		final int measurementNumberOfColumns = 5;
 		int row = dataFlexTable.getRowCount();
 		
-		Float avgTemperature = new Float(Math.round(dataPoint.getTemperature()));
-		Float uncertainty = new Float(Math.round(dataPoint.getUncertainty()));
+		Float avgTemperature = new Float(Math.round(dataPoint.getTemperature()*100)/100.0);
+		Float uncertainty = new Float(Math.round(dataPoint.getUncertainty()*100)/100.0);
 		
 		dataFlexTable.setText(row, 0, DateTimeFormat.getFormat("dd/MM/yyyy").format(dataPoint.getDate()));
 		dataFlexTable.setText(row, 1, avgTemperature.toString());
